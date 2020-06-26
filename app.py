@@ -4,8 +4,8 @@ from flask_jwt_extended import JWTManager
 from resource.user import User,Userlogin
 from resource.admin import Admin, Adminlogin
 from resource.sch import GetTeacherAvail, Sch
-from resource.seminars import Seminars, RequestStatus
-from resource.labs import Labs
+from resource.seminars import Seminars, RequestStatus, InvalidRequest, AddSeminar
+from resource.labs import Labs, AddLab
 
 app=Flask(__name__)
 app.config['PROPAGATE_EXPECTATIONS']=True
@@ -37,6 +37,9 @@ api.add_resource(Adminlogin,'/alogin')
 api.add_resource(GetTeacherAvail, '/getavail')
 api.add_resource(Sch,'/sch')
 api.add_resource(Labs,'/lab')
+api.add_resource(InvalidRequest,'/invalidreq')
+api.add_resource(AddSeminar,'/addsem')
+api.add_resource(AddLab,'/addlab')
 
 if __name__=='__main__':
     app.run(debug=True)

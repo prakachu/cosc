@@ -27,7 +27,7 @@ class User(Resource):
                                                         {data['dept_id']},
                                                         {data['year']},
                                                         '{data['password']}',
-                                                        '{data['username']}') """)
+                                                        '{data['username']}')""")
         except:
             return{"message":"There is an error connecting to the usertable"},500
         return {"message":"Sucessfully inserted"},201
@@ -59,4 +59,5 @@ class Userlogin(Resource):
             access_token=create_access_token(identity=users.username,expires_delta=False)
             return {'access_token':access_token},200
         return {"message":"Invalid Credentials"},401
+
 
