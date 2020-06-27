@@ -3,7 +3,7 @@ from flask_restful import Api
 from flask_jwt_extended import JWTManager
 from resource.user import User,Userlogin
 from resource.admin import Admin, Adminlogin
-from resource.sch import GetTeacherAvail, Sch
+from resource.sch import GetTeacherAvail, Sch, GetTeacherRoom
 from resource.seminars import Seminars, RequestStatus, InvalidRequest, AddSeminar
 from resource.labs import Labs, AddLab
 
@@ -35,6 +35,7 @@ api.add_resource(Userlogin,'/ulogin')
 api.add_resource(Admin, '/admin')
 api.add_resource(Adminlogin,'/alogin')
 api.add_resource(GetTeacherAvail, '/getavail')
+api.add_resource(GetTeacherRoom, '/getroom')
 api.add_resource(Sch,'/sch')
 api.add_resource(Labs,'/lab')
 api.add_resource(InvalidRequest,'/invalidreq')
