@@ -155,24 +155,14 @@ class GetTeacherAvail(Resource):
         except:
             return{"message":"there is an error connecting to database."},500
 
+         
+      
+ 
 class GetTeacherRoom(Resource):
     @jwt_required
     def get(self):
-        parser=reqparse.RequestParser()
-        parser.add_argument('fac_name',type=str,required=True,help="give teacher name")
-        data=parser.parse_args()
-        currentTime=datetime.now()
-        currentHour=currentTime.hour
-        print(currentTime)
-        currentPeriod=getPeriod(currentHour)
-        currentDay=getDay(currentTime)
         try:
-            return query(f"""SELECT schedule1.p_{currentPeriod} as current_hour FROM timetable.facultyprofile JOIN timetable.schedule1 WHERE
-            faculty_name LIKE '%'{data['fac_name']}'%' AND facultyprofile.faculty_id=schedule1.faculty_id
-            AND day_id={currentDay}""",return_json=True)
-            
+            return query(f"""SELECT * FROM timetable.schdum;""")
             
         except:
-            return{"message":"there is an error connecting to database."},500           
-       
-  
+            return{"message":"there is an error connecting to database."},500
